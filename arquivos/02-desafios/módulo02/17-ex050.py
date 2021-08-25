@@ -1,0 +1,2 @@
+# Desenvolva um programa que leia seis números inteiros e mostre a soma apenas daqueles que forem pares. Se o valor digitado for ímpar, desconsidere-o.
+# Dá pra fazer que, se o número for ímpar, o valor da variável dele é 0, e depois mandar somar tudo.

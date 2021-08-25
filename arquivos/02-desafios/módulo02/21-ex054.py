@@ -1,0 +1,2 @@
+# crie um programa que leia um ano de nascimento de sete pessoas. No final, mostre quantas pessoas ainda não atingiram a maioridade e quantas já são maiores. (maioridade = 21 anos)
+# Fazer um laço pra ficar perguntando a idade. Colocar um "if" que, sempre que uma pessoa for de maior, soma na variável MAIOR, e sempre que for de menor, soma na variável MENOR.

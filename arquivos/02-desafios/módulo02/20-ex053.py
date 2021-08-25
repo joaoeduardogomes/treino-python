@@ -1,0 +1,1 @@
+# Crie um programa que leia uma frase qualquer e digga se ela é um palíndromo, desconsiderando os espaços.
