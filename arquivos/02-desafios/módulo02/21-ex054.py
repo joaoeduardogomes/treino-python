@@ -9,7 +9,7 @@ menor = 0
 maior = 0
 
 for contador in range (1, 8):
-    ano =  int(input(f"informe seu ano de nascimento [{contador}]: "))
+    ano =  int(input(f"informe seu ano de nascimento [{contador}/7]: "))
     anos.append(ano)
     if ano_atual - ano < 21:
         menor = menor +1

@@ -1,8 +1,6 @@
 # Faça um programa que mostra na tela uma contagem regressiva para o estouro de fogos de artifício, indo de 10 até 0 segundos, com pausa de 1 segundo entre eles.
 
 from time import sleep
-from random import choice, choices
-from itertools import cycle
 
 cores = {'limpa':'\033[m',
         'azul':'\033[1;40;34m',
@@ -12,7 +10,6 @@ cores = {'limpa':'\033[m',
         'roxo':'\033[1;40;35m'}
 
 pintura = ('roxo', 'azul')
-num = 0
 
 str(input("Vamos começar a contagem regressiva para os fogos de artifício. Aperte ENTER quando estiver preparado."))
 

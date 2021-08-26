@@ -10,7 +10,6 @@ cores = {'limpa':'\033[m',
 frase = str(input("Digite uma frase e eu lhe digo se ela é um palíndromo: ")).lower()
 reverso = frase[::-1]
 
-
 if frase.replace(" ", "") == reverso.replace(" ", ""):
     print(f"A frase digitada {cores['verde']}é um palíndromo!{cores['limpa']}")
     print(f"Resultado: {cores['roxo']}{reverso}{cores['limpa']}")
