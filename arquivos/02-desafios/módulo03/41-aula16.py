@@ -16,3 +16,8 @@ print("Comi pra caramba!") # Terminado o laço, vai imprimir esta parte.
 
 for cont in range(0, len(lanche)+1):
     print(lanche[cont]) #imprime o lanche na posição 'cont'
+
+# ou:
+
+for pos, comida in enumerate(lanche):
+    print(f"Eu vou comer {comida} na posição {pos}.") 
