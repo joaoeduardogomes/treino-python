@@ -1,0 +1,3 @@
+"""
+Crie um programa em que o usuário digite uma expressão qualquer que use parênteses. Seu aplicativo deverá analisar se a expressão matemática passada está com os parênteses abertos e fechados na ordem correta.
+"""
