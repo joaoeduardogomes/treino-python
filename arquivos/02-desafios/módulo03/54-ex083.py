@@ -23,7 +23,7 @@ else:
 
 
 
-#ou, sem usar listas podemos fazer: 
+#ou, sem usar listas, podemos fazer: 
 """expressao = str(input('Digite sua expressão matemática. Atenção aos parênteses. '))
 
 if expressao.count('(') == expressao.count(')'):
