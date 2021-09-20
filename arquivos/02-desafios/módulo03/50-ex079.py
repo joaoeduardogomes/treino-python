@@ -11,9 +11,9 @@ while True:
         numeros.append(num)
     else:
         print(f"O número {num} não pôde ser adicionado à lista porque já faz parte dela e está localizado na posição {numeros.index(num)}.")
-    escolha = str(input("Quer cadastrar outro número (S/N)? ")).strip().lower()
+    escolha = str(input("Quer cadastrar outro número (S/N)? ")).strip().lower()[0]
     while escolha not in 'sn':
-        escolha = str(input("Opção inválida. Deseja cadastrar outro número (S/N)?")).strip().lower()
+        escolha = str(input("Opção inválida. Deseja cadastrar outro número (S/N)?")).strip().lower()[0]
     if escolha == 'n':
             break
     print(f"Valores na lista até o momento: {numeros}")

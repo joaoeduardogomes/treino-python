@@ -15,9 +15,9 @@ while True:
         pares.append(num)
     elif num % 2 != 0:
         impares.append(num)
-    escolha = str(input("Deseja adicionar outro valor (S/N)? ")).strip().lower()
+    escolha = str(input("Deseja adicionar outro valor (S/N)? ")).strip().lower()[0]
     while escolha not in 'sn':
-        escolha = str(input("Opção inválida. Deseja adicionar outro valor (S/N)? ")).strip().lower()
+        escolha = str(input("Opção inválida. Deseja adicionar outro valor (S/N)? ")).strip().lower()[0]
     if escolha == 'n':
         break
     print(f"Sua lista até o momento: {numeros}")

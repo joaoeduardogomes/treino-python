@@ -11,7 +11,7 @@ while True:
     numeros.append(int(input("Digite um valor inteiro para adicioná-lo à lista: ")))
     escolha = str(input("Deseja adicionar outro valor (S/N)? ")).strip().lower()
     while escolha not in 'sn':
-        escolha = str(input("Opção inválida. Deseja adicionar outro valor (S/N)? ")).strip().lower()
+        escolha = str(input("Opção inválida. Deseja adicionar outro valor (S/N)? ")).strip().lower()[0]
     if escolha == 'n':
         break
     print(f"Sua lista até o momento: {numeros}")

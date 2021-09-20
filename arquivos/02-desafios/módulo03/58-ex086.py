@@ -19,3 +19,29 @@ Tem que aparecer:
 [   x   ] [   x   ] [   x   ]
 [   x   ] [   x   ] [   x   ]
 '''
+
+from time import sleep
+
+valores = [[], [], []]
+
+for contador in range (1, 4): #entrada de valores
+    valores[0].append(int(input(f"Digite um valor para o ponto [1, {contador}]: ")))
+
+for contador in range (1, 4):
+    valores[1].append(int(input(f"Digite um valor para o ponto [2, {contador}]: ")))
+
+for contador in range (1, 4):
+    valores[2].append(int(input(f"Digite um valor para o ponto [3, {contador}]: ")))
+print("ANALISANDO...")
+sleep(2)
+print(f"Os valores digitados foram: {valores}.\nMONTANDO A MATRIZ...")
+sleep(2)
+print("A matriz ficou:")
+for c in valores[0]: #montagem da matriz
+    print(f" [{c:^9}] ", end="")
+print()
+for c in valores[1]:
+    print(f" [{c:^9}] ", end="")
+print()
+for c in valores[2]:
+    print(f" [{c:^9}] ", end="")
