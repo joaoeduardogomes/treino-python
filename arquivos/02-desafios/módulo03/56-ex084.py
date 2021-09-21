@@ -15,7 +15,7 @@ maiores = []
 while True:
     nome = str(input("Informe o nome da pessoa: ")).title()
     dados.append(nome)
-    peso = int(input("Informe o peso da pessoa: Kg "))
+    peso = float(input("Informe o peso da pessoa: Kg "))
     dados.append(peso)
     if menor_peso == 0:
         menor_peso = peso
@@ -32,12 +32,19 @@ while True:
         escolha = str(input("Opção inválida. Deseja cadastrar mais alguém? (S/N) ")).strip().lower()[0]
     if escolha == 'n':
         break
-        
+
+print(f"Número de pessoas cadastradas: {len(pessoas)}")
+print(f"O menor peso é {menor_peso}Kg, de: ", end="")
 for p in pessoas:
     if p[1] == menor_peso:
-        menores.append(p[0])
-    elif p[1] == maior_peso:
-        maiores.append(p[0])
+        print(f"[{p[0]}] ", end="")
+print()
+print(f"O maior peso é {maior_peso}Kg, de: ", end="")
+for p in pessoas:
+    if p[1] == maior_peso:
+        print(f"[{p[0]}] ", end="")
+print()
 
-print(f"O menor peso é {menor_peso}, de: {menores}.")
-print(f"O maior peso é {maior_peso}, de: {maiores}.")
+
+
+
