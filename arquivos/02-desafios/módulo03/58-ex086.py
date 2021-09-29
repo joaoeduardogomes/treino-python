@@ -24,7 +24,7 @@ from time import sleep
 
 valores = [[], [], []]
 
-for contador in range (1, 4): #entrada de valores
+for contador in range (1, 4): # entrada de valores
     valores[0].append(int(input(f"Digite um valor para o ponto [1, {contador}]: ")))
 
 for contador in range (1, 4):
@@ -37,7 +37,7 @@ sleep(2)
 print(f"Os valores digitados foram: {valores}.\nMONTANDO A MATRIZ...")
 sleep(2)
 print("A matriz ficou:")
-for c in valores[0]: #montagem da matriz
+for c in valores[0]: # montagem da matriz
     print(f" [{c:^9}] ", end="")
 print()
 for c in valores[1]:
@@ -45,3 +45,17 @@ for c in valores[1]:
 print()
 for c in valores[2]:
     print(f" [{c:^9}] ", end="")
+
+
+# Alternativa para não precisar usar 'append':
+'''
+matriz = [[0, 0, 0], [0, 0, 0], [0, 0, 0]]
+for linha in range (0, 3): #Esta parte é para colocar os valores na lista 'matriz'
+    for coluna in range (0, 3):
+        matriz[linha][coluna] = int(input(f"Digite um valor para o ponto [{linha}, {coluna}]: "))
+print("-=" * 30)
+for linha in range (0, 3): #Esta parte é para imprimir os valores na tela
+    for coluna in range (0, 3):
+        print(f"[{matriz[linha][coluna]:^9}]", end="")
+    print() #Este print serve para quebrar uma linha quando o programa terminar de imprimir as colunas
+'''

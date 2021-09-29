@@ -3,31 +3,50 @@ Faça um programa que ajude um jogador da MEGA SENA a criar palpites. O programa
 A) Os números não devem se repetir dentro de um mesmo jogo.
 B) Perguntar ao jogador quantos jogos ele quer sortear.
 """
-#Não funcionou
+
 from random import randint
+from time import sleep
 
-numeros = []
+cores = {'limpa':'\033[m',
+        'azul':'\033[34m',
+        'amarelo':'\033[33m',
+        'vermelho':'\033[31m',
+        'verde':'\033[32m',
+        'roxo':'\033[1;35m'}
 
-escolha = 2 #int(input("Quantos sorteios você quer? "))
+lista = []
+jogos = []
 
-for cont in range (0, 2):
+print('-=' * 20)
+print('         JOGA NA MEGA SENA         ')
+print('=-' * 20)
+quant = int(input("Quantos jogos você quer sortear? "))
+tot = 1
+while tot <= quant:
+    cont = 0
     while True:
-        sorteio = randint(1, 60)
-        numeros.append(sorteio)
-        print(len(numeros))
-        if len(numeros) == 6:
+        num = randint(1, 60)
+        if num not in lista:
+            lista.append(num)
+            cont += 1
+        if cont >= 6:
             break
+    
+    lista.sort()
+    jogos.append(lista[:])
+    lista.clear()
+    tot += 1
 
-'''while True:
-    sorteio = randint(1, 60)
-    numeros[0].append(sorteio)
-    if len(numeros[0]) == 6:
-        break
+print('-=' * 3, f" SORTEANDO {quant}JOGOS ", '=-' * 3)
+sleep(2)
 
-while True:
-    sorteio = randint(1, 60)
-    numeros[1].append(sorteio)
-    if len(numeros[1]) == 6:
-        break'''
+cor = ''
+for indice, lista in enumerate(jogos):
+    if indice % 2 == 0:
+        cor = 'azul'
+    else:
+        cor = 'verde'
+    print(f"Jogo {indice + 1}: {cores[cor]} {lista} {cores['limpa']}")
+    sleep(1.5)
 
-print(numeros)
+print(f"{cores['roxo']} BOA SORTE NOS SEUS JOGOS!! {cores['limpa']}")

@@ -9,8 +9,6 @@ C) Uma listagem com as pessoas mais leves
 pessoas = []
 dados = []
 menor_peso = maior_peso = 0
-menores = []
-maiores = []
 
 while True:
     nome = str(input("Informe o nome da pessoa: ")).title()
