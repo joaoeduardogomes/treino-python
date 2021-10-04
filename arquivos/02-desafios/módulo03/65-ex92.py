@@ -12,7 +12,7 @@ cadastro = []
 
 ano_atual = date.today().year
 
-"""for c in dados:
+for c in dados:
     if c == 'nome':
         dados[c] = str(input(f"Informe seu {c}: ")).strip().title()
     elif c == 'salário':
@@ -25,16 +25,11 @@ ano_atual = date.today().year
         break
         
 dados['idade'] = int(ano_atual - dados['ano de nascimento'])
-dados['idade em que irá se aposentar'] = int(dados['idade'] + 35)
+dados['idade com que irá se aposentar'] = int(dados['idade'] + 35)
 
 print("ANALISANDO DADOS DO USUÁRIO...")
-sleep(1)"""
-cadastro.append(dados.copy())
+sleep(1)
 
-for c in dados:
-    print(f"{c}: ", end="")
-    print()
-
-for v in cadastro:
-    for valor in dados.values():
-        print(valor)
+for c, v in dados.items():
+    if v != 0:
+        print(f"{c}: {v}")
