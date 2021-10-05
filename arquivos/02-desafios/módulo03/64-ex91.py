@@ -18,11 +18,12 @@ for cont in range (0, 4):
 
 print("ORGANIZANDO O RANKING...")
 sleep(3)
-rank = sorted(jogos, key=itemgetter('resultado'), reverse=True) #Aqui é feita a organização com base no item 'resultado' dos dicionários. O 'reverse=True' estabelece que será do maior pro menor.
+rank = sorted(jogos, key=itemgetter('resultado'), reverse=True) #Aqui é feita a organização com base no item 'resultado' dos dicionários. O 'reverse=True' estabelece que será do maior pro menor. 'rank' é uma lista.
 
 print('~~'*15)
 for c, v in enumerate(rank):
-    print(f"Em {c+1}º lugar ficou o {v['nome']}, com o resultado {v['resultado']}")
+    print(f"  — Em {c+1}º lugar ficou o {v['nome']}, com o resultado {v['resultado']}")
+    sleep(1.5)
 
 print('~~'*15)
 

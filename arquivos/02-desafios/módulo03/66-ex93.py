@@ -15,6 +15,7 @@ dados[1]['partidas'] = (int(input(f"Quantas partidas [{dados[0]['nome']}] jogou?
 
 for cont in range (1, dados[1]['partidas']+1):
     dados[1][f'partida {cont}'] = int(input(f"Quantos gols [{dados[0]['nome']}] marcou no jogo {cont}? "))
+    # Adicionando o saldo total de gols na chave 'gols':
     dados[1]['gols'] = dados[1]['gols'] + dados[1][f'partida {cont}']
 
 dados[1]['gol(s) por partida'] = dados[1]['gols'] / dados[1]['partidas']

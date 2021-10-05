@@ -5,7 +5,7 @@ Faça um programa que leia nome e média de um aluno, guardando também a situa�
 resultados = {}
 
 resultados['Nome'] = str(input("Digite o nome do(a) aluno(a): ")).title().strip()
-resultados['Média'] = float(input("Digite a média do aluno: "))
+resultados['Média'] = float(input("Digite a média do(a) aluno(a): "))
 if resultados['Média'] >= 7:
     resultados['Situação'] = str('Aprovado')
 elif 5 <= resultados['Média'] < 7:

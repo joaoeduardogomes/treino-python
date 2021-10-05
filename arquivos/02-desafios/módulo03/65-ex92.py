@@ -25,7 +25,8 @@ for c in dados:
         break
         
 dados['idade'] = int(ano_atual - dados['ano de nascimento'])
-dados['idade com que irá se aposentar'] = int(dados['idade'] + 35)
+if dados['CTPS'] != 0:
+    dados['idade com que irá se aposentar'] = int(dados['idade'] + 35)
 
 print("ANALISANDO DADOS DO USUÁRIO...")
 sleep(1)
