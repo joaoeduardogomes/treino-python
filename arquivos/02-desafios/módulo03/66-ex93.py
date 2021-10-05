@@ -5,6 +5,24 @@ No final, tudo isso será guardado em um dicionário, incluindo o total de gols 
     *NOTA2: se o jogador não esteve em nenhuma partida, o programa não deve perguntar o número de gols marcados.
 """
 
-dados = [{'nome': ""}, {'partidas': 0, 'gol(s) por partida': 0}]
+from time import sleep
 
-dados[0]['nome'] = str(input(""))
+dados = [{'nome': ""}, {'partidas': 0, 'gols': 0, 'gol(s) por partida': 0}]
+
+dados[0]['nome'] = str(input("Digite o nome do jogador: ")).strip().title()
+
+dados[1]['partidas'] = (int(input(f"Quantas partidas [{dados[0]['nome']}] jogou? ")))
+
+for cont in range (1, dados[1]['partidas']+1):
+    dados[1][f'partida {cont}'] = int(input(f"Quantos gols [{dados[0]['nome']}] marcou no jogo {cont}? "))
+    dados[1]['gols'] = dados[1]['gols'] + dados[1][f'partida {cont}']
+
+dados[1]['gol(s) por partida'] = dados[1]['gols'] / dados[1]['partidas']
+
+print('-='*15)
+print(f"APROVEITAMENTO DO JOGADOR {dados[0]['nome'].upper()}:")
+print('-='*15)
+sleep(1.5)
+
+for c, v in dados[1].items():
+    print(f"{c.title()}: {v:.2f}")
