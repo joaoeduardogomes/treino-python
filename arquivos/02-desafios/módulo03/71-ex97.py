@@ -11,9 +11,9 @@ Olá, Mundo!
 """
 
 def escreva(msg):
-    print('~' * 30)
-    print(msg)
-    print('~' * 30)
+    print('~' * len(msg))
+    print(f"{msg}")
+    print('~' * len(msg))
 
 
 mensagem = str(input("Digite algo: "))
