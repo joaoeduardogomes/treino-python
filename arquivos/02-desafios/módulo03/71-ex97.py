@@ -11,9 +11,10 @@ Olá, Mundo!
 """
 
 def escreva(msg):
-    print('~' * len(msg))
-    print(f"{msg}")
-    print('~' * len(msg))
+    tamanho = len(msg) + 4
+    print('~' * tamanho)
+    print(f"  {msg}")
+    print('~' * tamanho)
 
 
 mensagem = str(input("Digite algo: "))

@@ -16,5 +16,5 @@ def maior(*num):
 valores = []
 num = int(input("Quantos valores deseja sortear? "))
 for cont in range (0, num):
-    valores.append(randint(1, 10))
+    valores.append(randint(1, 20))
 maior(valores)
