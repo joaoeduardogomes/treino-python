@@ -15,6 +15,12 @@ nome = str(input("Informe o nome do jogador: ")).strip().title()
 if nome == "":
     nome = str("desconhecido").title()
 
-gols = int(input(f"Quantos gols o jogador {nome} marcou? "))
+while True:
+    try:
+        gols = int(input(f"Quantos gols o jogador {nome} marcou? "))
+        break
+    except ValueError:
+        gols = 0
+        break
 
 ficha(nome, gols)
