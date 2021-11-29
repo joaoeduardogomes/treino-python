@@ -1,5 +1,5 @@
 """
-Faça um programa que tenha uma função chamada 'notas()", que pode receber várias notas de alunos e vai retornar um dicionário com as seguintes informações:
+Faça um programa que tenha uma função chamada 'notas()", que pode receber várias notas de alunos e retornar um dicionário com as seguintes informações:
 
 - Quantidade de notas
 - A maior nota
@@ -19,22 +19,31 @@ def cadastraNotas(*num, sit):
     for pos in range(0, len(num[0])): #tem que ser "len(num[0]) porque a função cria uma lista dentro de uma tupla"
         alunos[f'Nota {pos + 1}'] = num[0][pos]
         
+    alunos['Média'] = float(mean(notas_aluno))
+    notas_turma.append(notas_aluno[:])
     print(alunos)
-    print(len(num[0]))
+    print(notas_aluno)
+    print(notas_turma)
 #def exibeNotas():
 
 
 alunos = {} #aqui vão as informações puras
 dados = []
-notas_aluno = [] #aqui vão todas as notas cadastradas para termos as médias
-notas_turma = []
+notas_aluno = [] #aqui vão todas as notas cadastradas para termos as médias do aluno
+notas_turma = [] #aqui vão as notas de toda a turma para o cálculo da média geral
 situacao_temporario = []
 
-for cont in range (0, 3):
+while True:
+    alunos['Nome'] = str(input("Insira o nome do aluno: ")).strip().title()
+    if alunos['Nome'] != "":
+        break
+
+quant_notas = int(input(f"Quantas notas de {alunos['Nome']} gostaria de cadastrar? "))
+for cont in range (0, quant_notas):
     notas_aluno.append(float(input("Informe a nota do aluno: ")))
 cadastraNotas(notas_aluno, sit=True) #O "sit" de "situação" vai ser a opção de mostrar ou não a situação do aluno.
 
-#escolha_exibicao = str(input("Deseja exibir as notas da turma? (s/n) "))
+escolha_exibicao = str(input("Deseja exibir as notas da turma? (s/n) ")).strip().lower()[0]
 
 
 '''print(dados)
