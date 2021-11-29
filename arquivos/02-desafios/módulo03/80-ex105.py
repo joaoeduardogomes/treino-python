@@ -17,33 +17,45 @@ from statistics import mean
 def cadastraNotas(*num, sit):
     print(num)
     for pos in range(0, len(num[0])): #tem que ser "len(num[0]) porque a função cria uma lista dentro de uma tupla"
-        alunos[f'Nota {pos + 1}'] = num[0][pos]
+        dados[f'Nota {pos + 1}'] = num[0][pos]
         
-    alunos['Média'] = float(mean(notas_aluno))
+    dados['Média'] = float(mean(notas_aluno))
     notas_turma.append(notas_aluno[:])
-    print(alunos)
-    print(notas_aluno)
-    print(notas_turma)
+    
 #def exibeNotas():
 
 
-alunos = {} #aqui vão as informações puras
-dados = []
+alunos = [] #aqui vão as informações puras
+dados = {}
 notas_aluno = [] #aqui vão todas as notas cadastradas para termos as médias do aluno
 notas_turma = [] #aqui vão as notas de toda a turma para o cálculo da média geral
 situacao_temporario = []
 
+
 while True:
-    alunos['Nome'] = str(input("Insira o nome do aluno: ")).strip().title()
-    if alunos['Nome'] != "":
+    while True:
+        dados['Nome'] = str(input("Insira o nome do aluno: ")).strip().title()
+        if dados['Nome'] != "":
+            break
+
+    quant_notas = int(input(f"Quantas notas de {dados['Nome']} gostaria de cadastrar? "))
+    for cont in range (0, quant_notas):
+        notas_aluno.append(float(input("Informe a nota do aluno: ")))
+    cadastraNotas(notas_aluno, sit=True) #O "sit" de "situação" vai ser a opção de mostrar ou não a situação do aluno.
+
+    alunos.append(dados)
+    dados.clear()
+    print(dados)
+    print(alunos)
+    print(notas_turma)
+
+    escolha_repeticao = str(input("Deseja cadastrar as notas de outro aluno? (s/n) ")).strip().lower()[0]
+    while escolha_repeticao not in 'sn':
+            escolha_repeticao = str(input("Deseja cadastrar as notas de outro aluno? (s/n) ")).strip().lower()[0]
+    if escolha_repeticao == 'n':
         break
 
-quant_notas = int(input(f"Quantas notas de {alunos['Nome']} gostaria de cadastrar? "))
-for cont in range (0, quant_notas):
-    notas_aluno.append(float(input("Informe a nota do aluno: ")))
-cadastraNotas(notas_aluno, sit=True) #O "sit" de "situação" vai ser a opção de mostrar ou não a situação do aluno.
-
-escolha_exibicao = str(input("Deseja exibir as notas da turma? (s/n) ")).strip().lower()[0]
+#escolha_exibicao = str(input("Deseja exibir as notas da turma? (s/n) ")).strip().lower()[0]
 
 
 '''print(dados)

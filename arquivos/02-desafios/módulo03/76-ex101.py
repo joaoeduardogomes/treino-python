@@ -4,10 +4,11 @@ Crie um programa que tenha uma função chamada 'voto()', que vai receber como p
 **para 16, 17 e 65+ anos o voto é opcional
 """
 
-from datetime import date
 from time import sleep
 
+
 def voto(ano_nascimento):
+    from datetime import date #importando dentro da função, economiza-se memória
     linhaB('  ANALISANDO SUA SITUAÇÃO  ')
     print(f"{estilo_texto['negrito']}{cor_texto['roxo']}  ANALISANDO SUA SITUAÇÃO  {cor_texto['limpa']}")
     linhaB('  ANALISANDO SUA SITUAÇÃO  ')
@@ -18,10 +19,10 @@ def voto(ano_nascimento):
     if idade < 16:
         voto = 'NEGADO'
         cor = cor_texto['vermelho']
-    elif 16 <= idade < 18 or idade >= 65:
+    elif 16 <= idade < 18 or idade > 65:
         voto = 'OPCIONAL'
         cor = cor_texto['azul']
-    elif 18 <= idade < 65:
+    elif 18 <= idade <= 65:
         voto = 'OBRIGATÓRIO'
         cor = cor_texto['verde']
     # resultado na tela:
