@@ -28,7 +28,7 @@ def cadastraNotas(*num, sit):
         dados['Situação'] = str('RAZOÁVEL')
     elif dados['Média'] < 6:
         dados['Situação'] = str('RUIM')
-    notas_turma.append(notas_aluno[:])
+    notas_turma.append(dados['Média']) #copia-se a média do aluno para depois calcular a média da turma
 
 def exibeDados():
     escolha_situacao = str(input("Deseja verificar a situação da turma?"))
