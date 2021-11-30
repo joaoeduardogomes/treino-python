@@ -6,7 +6,12 @@ Crie um programa que tenha uma função 'fatorial()' que receba dois parâmetros
 
 from math import factorial
 
-def fatorial(numero, show):
+def fatorial(numero, show=False): #se não preencher, o padrão é falso
+    """
+    -> Calcula o fatorial de um número.
+    :param numero: o número a ter seu fatorial calculado.
+    :param show: mostrar ou não a conta.
+    """
     fatorial_num = factorial(entrada_num)
     print("-="*20)
     print(f"O fatorial de {entrada_num}! é {fatorial_num}") #aqui mostra só o valor do fatorial
@@ -42,3 +47,5 @@ while escolha not in 'sn':
         mostrar = False
 
 fatorial(entrada_num, mostrar)
+
+help(fatorial)

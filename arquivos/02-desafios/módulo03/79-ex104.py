@@ -15,7 +15,7 @@ def leiaInt():
             print('~~' * 20)
             break
         except ValueError:
-            print(f"Erro! O valor inserido não é um número inteiro.")
+            print(f"ERRO! O valor inserido não é um número inteiro.")
             continue
 
     print(f"O número inteiro que você digitou foi: {n}")

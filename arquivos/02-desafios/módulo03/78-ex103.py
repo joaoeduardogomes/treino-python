@@ -13,7 +13,7 @@ def ficha(nome, gols):
 
 nome = str(input("Informe o nome do jogador: ")).strip().title()
 if nome == "":
-    nome = str("desconhecido").title()
+    nome = str("<desconhecido>")
 
 while True:
     try:
@@ -24,3 +24,22 @@ while True:
         break
 
 ficha(nome, gols)
+
+# outra alternativa para não ter que usar try/except:
+"""
+gols = str(input(f"Quantos gols o jogador {nome} marcou? ")) # string pode ficar vazia
+if gols.isnumeric():
+    gols = int(gols) # aqui se transforma o número de str para numeral int
+else:
+    gols = 0
+"""
+
+# Também é possível passar os parâmetros como opcionais. Nesse caso, se o nome for vazio, só os gols serão passados:
+"""
+def ficha(nome=<desconhecido>, gols=0)
+
+if nome == '':
+    ficha(gols=gols)
+else:
+    ficha(nome, gols)
+"""
