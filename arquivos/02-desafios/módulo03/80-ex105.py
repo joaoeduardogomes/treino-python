@@ -19,20 +19,31 @@ def cadastraNotas(*num, sit):
     for pos in range(0, len(num[0])): #tem que ser "len(num[0]) porque a função cria uma lista dentro de uma tupla"
         dados[f'Nota {pos + 1}'] = num[0][pos]
         
+    dados['Menor nota'] = float(min(notas_aluno))
+    dados['Maior nota'] = float(max(notas_aluno))
     dados['Média'] = float(mean(notas_aluno))
+    if dados['Média'] > 7:
+        dados['Situação'] = str('BOA')
+    elif 6 <= dados['Média'] <= 7:
+        dados['Situação'] = str('RAZOÁVEL')
+    elif dados['Média'] < 6:
+        dados['Situação'] = str('RUIM')
     notas_turma.append(notas_aluno[:])
-    
-#def exibeNotas():
+
+def exibeDados():
+    escolha_situacao = str(input("Deseja verificar a situação da turma?"))
 
 
-alunos = [] #aqui vão as informações puras
-dados = {}
+alunos = [] #aqui vão as informações finais (copiadas do dicionário 'dados')
+dados = {} #aqui vão as informações temporárias (copiadas para a lista 'alunos')
 notas_aluno = [] #aqui vão todas as notas cadastradas para termos as médias do aluno
 notas_turma = [] #aqui vão as notas de toda a turma para o cálculo da média geral
 situacao_temporario = []
 
 
 while True:
+    dados.clear()
+    notas_aluno.clear()
     while True:
         dados['Nome'] = str(input("Insira o nome do aluno: ")).strip().title()
         if dados['Nome'] != "":
@@ -43,10 +54,11 @@ while True:
         notas_aluno.append(float(input("Informe a nota do aluno: ")))
     cadastraNotas(notas_aluno, sit=True) #O "sit" de "situação" vai ser a opção de mostrar ou não a situação do aluno.
 
-    alunos.append(dados)
-    dados.clear()
-    print(dados)
+    alunos.append(dados.copy())
+    
+    '''print(dados)
     print(alunos)
+    print(notas_turma)'''
     print(notas_turma)
 
     escolha_repeticao = str(input("Deseja cadastrar as notas de outro aluno? (s/n) ")).strip().lower()[0]
@@ -55,7 +67,12 @@ while True:
     if escolha_repeticao == 'n':
         break
 
-#escolha_exibicao = str(input("Deseja exibir as notas da turma? (s/n) ")).strip().lower()[0]
+while True:
+    escolha_exibicao = str(input("Deseja exibir as notas da turma? (s/n) ")).strip().lower()[0]
+    if escolha_exibicao == 's':
+        exibeDados()
+    elif escolha_exibicao == 'n':
+        break
 
 
 '''print(dados)
