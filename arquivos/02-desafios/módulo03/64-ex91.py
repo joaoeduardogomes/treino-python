@@ -26,16 +26,3 @@ for c, v in enumerate(rank):
     sleep(1.5)
 
 print('~~'*15)
-
-
-#Rascunho:
-'''jogos = [{'Jogador 1': 0 }, {'Jogador 2': 0}, {'Jogador 3': 0}, {'Jogador 4': 0}]
-
-for cont in range (0, 4):
-    jogos[cont][f'Jogador {cont+1}'] = randint(1, 20)
-    print(f"Resultado do Jogador {cont+1}: {jogos[cont][f'Jogador {cont+1}']}")
-
-print('-='*15)
-for k, v in enumerate(jogos):
-    print(f"{k}, {v}")
-print('-='*15)'''

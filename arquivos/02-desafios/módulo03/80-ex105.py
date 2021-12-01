@@ -31,14 +31,25 @@ def cadastraNotas(*num, sit):
     notas_turma.append(dados['Média']) #copia-se a média do aluno para depois calcular a média da turma
 
 def exibeDados():
-    escolha_situacao = str(input("Deseja verificar a situação da turma?"))
+    while True:
+        escolha_situacao = str(input("Deseja verificar a situação da turma? (s/n) ")).strip().lower()[0]
+        if escolha_situacao == 'n':
+            for cont in range(0, len(alunos)):
+                del (alunos[cont]['Situação'])
+            break
+        if escolha_situacao == 's':
+            break
+
+    print(alunos)
+    for i, v in enumerate(alunos):
+        print(f"{i + 1}: {v}")
+    
 
 
 alunos = [] #aqui vão as informações finais (copiadas do dicionário 'dados')
 dados = {} #aqui vão as informações temporárias (copiadas para a lista 'alunos')
 notas_aluno = [] #aqui vão todas as notas cadastradas para termos as médias do aluno
 notas_turma = [] #aqui vão as notas de toda a turma para o cálculo da média geral
-situacao_temporario = []
 
 
 while True:
@@ -49,17 +60,17 @@ while True:
         if dados['Nome'] != "":
             break
 
-    quant_notas = int(input(f"Quantas notas de {dados['Nome']} gostaria de cadastrar? "))
+    while True:
+        try:
+            quant_notas = int(input(f"Quantas notas de {dados['Nome']} gostaria de cadastrar? "))
+            break
+        except ValueError:
+            continue
     for cont in range (0, quant_notas):
         notas_aluno.append(float(input("Informe a nota do aluno: ")))
     cadastraNotas(notas_aluno, sit=True) #O "sit" de "situação" vai ser a opção de mostrar ou não a situação do aluno.
 
     alunos.append(dados.copy())
-    
-    '''print(dados)
-    print(alunos)
-    print(notas_turma)'''
-    print(notas_turma)
 
     escolha_repeticao = str(input("Deseja cadastrar as notas de outro aluno? (s/n) ")).strip().lower()[0]
     while escolha_repeticao not in 'sn':
@@ -68,53 +79,12 @@ while True:
         break
 
 while True:
-    escolha_exibicao = str(input("Deseja exibir as notas da turma? (s/n) ")).strip().lower()[0]
+    try:
+        escolha_exibicao = str(input("Deseja exibir as notas da turma? (s/n) ")).strip().lower()[0]
+    except IndexError:
+        continue
     if escolha_exibicao == 's':
         exibeDados()
+        break
     elif escolha_exibicao == 'n':
         break
-
-
-'''print(dados)
-print(notas)
-print(mean(notas)) #mostrar a média da turma'''
-
-
-
-'''rascunho: def cadastraNotas():
-    while True:
-        alunos['Nome'] = str(input("Digite o nome do aluno: ")).strip().title() #add nome
-
-        while True:
-            try:
-                num_notas = int(input("Quantas notas do aluno deseja cadastrar? "))
-                break
-            except ValueError:
-                continue
-
-        for cont in range(1, num_notas + 1):
-            while True:
-                try:
-                    alunos[f'Nota {cont}'] = float(input(f"Informe a {cont}ª nota do aluno: "))
-                    break
-                except ValueError:
-                    continue
-            notas.append(alunos[f'Nota {cont}'])
-            situacao_temporario.append(alunos[f'Nota {cont}'])
-    
-        alunos['Média'] = mean(situacao_temporario) #definir a situação do aluno
-        if alunos['Média'] > 7.5:
-            alunos['Situação'] = 'Boa'
-        elif 6 <= alunos['Média'] <= 7.5:
-            alunos['Situação'] = 'Razoável'
-        elif alunos['Média'] < 6:
-            alunos['Situação'] = 'Ruim'
-
-        dados.append(alunos.copy()) #passar os dados para uma lista definitiva
-        
-        resposta_cadastro = "a"
-        while resposta_cadastro not in 'sn':
-            resposta_cadastro = str(input("Deseja cadastrar outro aluno? (s/n) ")).strip().lower()[0]
-        if resposta_cadastro == 'n':
-            break
-'''
