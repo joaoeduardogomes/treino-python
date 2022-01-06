@@ -1,11 +1,7 @@
 from random import randrange
 
 
-def jogar():
-    print("*********************************")
-    print("***Bem vindo ao jogo da Forca!***")
-    print("*********************************")
-
+def define_palavra():
     # Abrindo o .txt para palavras aleatórias
     arquivo = open("forca_palavras.txt", "r")
     palavras = []
@@ -16,10 +12,32 @@ def jogar():
 
     arquivo.close() #fechando a leitura do .txt
 
-    numero = randrange(0, len(palavras)) #escolhendo uma palavra aleatoriamente
+    numero = randrange(0, len(palavras)) #escolhendo uma palavra aleatoriamente. Usa-se "randrange" porque o número final é ignorado. Isso é importante porque o último item da lista é um número menor do que o tamanho dela (porque começa em 0).
 
     palavra_secreta = palavras[numero].upper() #definindo a palavra secreta
-    letras_acertadas = ["_" for letra in palavra_secreta]
+
+    return palavra_secreta #permite que a variável seja acessada fora da função
+
+def inicializa_letras_acertadas(palavra):
+    return ["_" for letra in palavra]
+
+def pede_chute():
+    chute = str(input(f"\nChute uma letra: ")).strip().upper()
+    return chute
+
+def marca_chute_correto(chute, letras_acertadas, palavra_secreta):
+    index = 0
+    for letra in palavra_secreta:
+        if (chute == letra):
+            letras_acertadas[index] = letra
+        index += 1
+
+def jogar():
+    mensagem_abertura()
+
+    palavra_secreta = define_palavra()
+    
+    letras_acertadas = inicializa_letras_acertadas(palavra_secreta)
 
     enforcou = False
     acertou = False
@@ -29,29 +47,120 @@ def jogar():
     erros = 0
 
     while (not acertou and not enforcou): #"not acertou" é o mesmo que "acertou = False"
-        chute = str(input("Chute uma letra: ")).strip().upper()
+        chute = pede_chute()
 
         if (chute in palavra_secreta):
-            index = 0
-            for letra in palavra_secreta:
-                if (chute == letra):
-                    letras_acertadas[index] = letra
-                index += 1
+            marca_chute_correto(chute, letras_acertadas, palavra_secreta)
+
         else:
             erros += 1
-            print(f"Ops, você errou! Faltam {6-erros} tentativas.")
+            print(f"\nOps, você errou! Faltam {6-erros} tentativas.")
+            desenha_forca(erros)
 
-        enforcou = erros == 6 #a variável "enforcou" passa a ser verdadeira quando o n° de erros chegar a 6
+
+        enforcou = erros == 7 #a variável "enforcou" passa a ser verdadeira quando o n° de erros chegar a 6
         acertou = "_" not in letras_acertadas
         print(letras_acertadas)
 
     if(acertou):
-        print("Parabéns, você ganhou!")
-        print(f"A palavra foi: {palavra_secreta.lower()}")
+        imprime_mensagem_vitoria(palavra_secreta)
     else:
-        print("Que pena, você perdeu.")
-        print(f"A palavra era: {palavra_secreta}")
+        imprime_mensagem_derrota(palavra_secreta)
     print("Fim do jogo")
+
+def imprime_mensagem_vitoria(palavra_secreta):
+    print(f"\nParabéns, você ganhou!")
+    print(f"A palavra foi: {palavra_secreta.title()}")
+    print(f"{cor_texto['amarelo']}")
+    print("       ___________      ")
+    print("      '._==_==_=_.'     ")
+    print("      .-\\:      /-.    ")
+    print("     | (|:.     |) |    ")
+    print("      '-|:.     |-'     ")
+    print("        \\::.    /      ")
+    print("         '::. .'        ")
+    print("           ) (          ")
+    print("         _.' '._        ")
+    print("        '-------'       ")
+    print(f"{cor_texto['limpa']}")
+
+def imprime_mensagem_derrota(palavra_secreta):
+    print(f"\nQue pena, você perdeu.")
+    print(f"A palavra era: {palavra_secreta.title()}")
+    print(f"{cor_texto['vermelho']}")
+    print("    _______________         ")
+    print("   /               \       ")
+    print("  /                 \      ")
+    print("//                   \/\  ")
+    print("\|   XXXX     XXXX   | /   ")
+    print(" |   XXXX     XXXX   |/     ")
+    print(" |   XXX       XXX   |      ")
+    print(" |                   |      ")
+    print(" \__      XXX      __/     ")
+    print("   |\     XXX     /|       ")
+    print("   | |           | |        ")
+    print("   | I I I I I I I |        ")
+    print("   |  I I I I I I  |        ")
+    print("   \_             _/       ")
+    print("     \_         _/         ")
+    print("       \_______/           ")
+    print(f"{cor_texto['limpa']}")
+
+def desenha_forca(erros):
+    print("  _______     ")
+    print(" |/      |    ")
+
+    if(erros == 1):
+        print(" |      (_)   ")
+        print(" |            ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 2):
+        print(" |      (_)   ")
+        print(" |      \     ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 3):
+        print(" |      (_)   ")
+        print(" |      \|    ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 4):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |            ")
+        print(" |            ")
+
+    if(erros == 5):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |            ")
+
+    if(erros == 6):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |      /     ")
+
+    if (erros == 7):
+        print(" |      (_)   ")
+        print(" |      \|/   ")
+        print(" |       |    ")
+        print(" |      / \   ")
+
+    print(" |            ")
+    print("_|___         ")
+    print()
+
+def mensagem_abertura():
+    print("*********************************")
+    print("***Bem vindo ao jogo da Forca!***")
+    print("*********************************")
+
 
 estilo_texto = {'padrão':'\033[0m',
         'negrito' : '\033[1m', 
