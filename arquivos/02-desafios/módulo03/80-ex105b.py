@@ -14,10 +14,11 @@ Adicione também as docstrings da função.
 
 from statistics import mean
 
-def cadastraNotas(*num):
+def cadastraNotas(*num, sit):
     """
     -> função na qual são cadastradas as notas dos alunos.
-    :param *num : todas as notas inseridas no loop.
+    :param *num : todas as notas inseridas no loop
+        :param sit : testa se a situação do aluno deve ser cadastrada.
     """
     for pos in range(0, len(num[0])): #tem que ser "len(num[0]) porque a função cria uma lista dentro de uma tupla"
         dados[f'Nota {pos + 1}'] = num[0][pos]
@@ -25,29 +26,20 @@ def cadastraNotas(*num):
     dados['Menor nota'] = float(min(notas_aluno))
     dados['Maior nota'] = float(max(notas_aluno))
     dados['Média'] = float(mean(notas_aluno))
-    if dados['Média'] > 7:
-        dados['Situação'] = str('BOA')
-    elif 6 <= dados['Média'] <= 7:
-        dados['Situação'] = str('RAZOÁVEL')
-    elif dados['Média'] < 6:
-        dados['Situação'] = str('RUIM')
+
+    if sit:
+        if dados['Média'] > 7:
+            dados['Situação'] = str('BOA')
+        elif 6 <= dados['Média'] <= 7:
+            dados['Situação'] = str('RAZOÁVEL')
+        elif dados['Média'] < 6:
+            dados['Situação'] = str('RUIM')
     notas_turma.append(dados['Média']) #copia-se a média do aluno para depois calcular a média da turma
 
 def exibeDados():
-    while True:
-        escolha_situacao = str(input("Deseja verificar a situação da turma? (s/n) ")).strip().lower()[0]
-        if escolha_situacao == 'n':
-            for cont in range(0, len(alunos)):
-                del (alunos[cont]['Situação'])
-            break
-        if escolha_situacao == 's':
-            break
-
     print(alunos)
-    print()
     for i, v in enumerate(alunos):
         print(f"{i + 1}: {v}")
-    
 
 
 alunos = [] #aqui vão as informações finais (copiadas do dicionário 'dados')
@@ -72,7 +64,13 @@ while True:
             continue
     for cont in range (0, quant_notas):
         notas_aluno.append(float(input("Informe a nota do aluno: ")))
-    cadastraNotas(notas_aluno)
+
+    mostrar_situacao = str(input("Deseja exibir a situação do aluno? ")).strip().lower()[0]
+    if mostrar_situacao == 's':
+        situacao = True
+    else:
+        situacao = False
+    cadastraNotas(notas_aluno, sit=situacao) #O "sit" de "situação" vai ser a opção de mostrar ou não a situação do aluno.
 
     alunos.append(dados.copy())
 
