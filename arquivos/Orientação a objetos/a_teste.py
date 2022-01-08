@@ -13,4 +13,5 @@ def extrato(conta):
     print(f"O saldo é: {conta['saldo']}")
 
 
-
+conta = cria_conta(1, 2, 3, 4)
+print(conta)
