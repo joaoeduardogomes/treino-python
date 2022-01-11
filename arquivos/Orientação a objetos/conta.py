@@ -1,8 +1,10 @@
 from datas import Data
+from random import randint
 
 class Conta:
 
-    def __init__(self, numero, titular, saldo, limite):
+    #os valores abaixo foram pré-definidos apenas para acelerar o teste.
+    def __init__(self, numero = randint(123, 987), titular = "João", saldo = 50.0, limite = 1000.0):
         print(f"Construindo objeto...{self}")
         #O self será o código do objeto. Ele é a referência do objeto criado.
         """
@@ -28,8 +30,13 @@ class Conta:
         print("Data do depósito: ", end="")
         Data()
 
+    def __pode_sacar(self, valor_a_sacar):
+        saque_disponivel = self.__saldo + self.__limite
+        return valor_a_sacar <= saque_disponivel
+        #Ele devolve True se a condição do método "saca" for cumprida conforme este método
+
     def saca(self, valor):
-        if(valor <= (self.__saldo + self.__limite)):
+        if(self.__pode_sacar(valor)):
             self.__saldo -= valor
             print(f"Valor do saque: R$ {valor}")
             print("Data do saque: ", end="")
@@ -55,3 +62,11 @@ class Conta:
     @limite.setter
     def limite(self, limite): #"set_" enviam informações
         self.__limite = limite
+
+    @staticmethod
+    def codigo_banco():
+        return "001"
+
+    @staticmethod
+    def codigos_bancos():
+        return {'BB': '001', 'Caixa': '104', 'Bradesco': '237'}
