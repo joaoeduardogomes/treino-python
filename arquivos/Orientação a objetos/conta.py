@@ -11,24 +11,29 @@ class Conta:
         2) conta = Conta()
         """
         #Os valores abaixo podem tanto ser especificados após o ponto como serem introduzidos pelo usuário. Para o segundo caso, basta pedir esses parâmetros no "def" e colocá-los no "self" abaixo.
-        self.numero = numero
-        self.titular = titular
-        self.saldo = saldo
-        self.limite = limite
+        self.__numero = numero 
+        self.__titular = titular
+        self.__saldo = saldo
+        self.__limite = limite
+        #O "__" impede que o parâmetro seja acessado diretamente. Dessa forma, é preciso uma função para acessar seu valor. Ex: para acessar o saldo, enquanto houver "__", só será possível pelo método "extrato()".
 
     def extrato(self):
-        print(f"Saldo {self.saldo} do titular {self.titular}")
+        print(f"Saldo {self.__saldo} do titular {self.__titular}")
         print("Data do extrato: ", end="")
         Data()
 
     def deposita(self, valor):
-        self.saldo += valor
+        self.__saldo += valor
         print(f"Valor do depósito: R$ {valor}")
         print("Data do depósito: ", end="")
         Data()
 
     def saca(self, valor):
-        self.saldo -= valor
+        self.__saldo -= valor
         print(f"Valor do saque: R$ {valor}")
         print("Data do saque: ", end="")
         Data()
+
+    def transfere(self, valor, origem, destino):
+        origem.saca(valor)
+        destino.deposita(valor)
