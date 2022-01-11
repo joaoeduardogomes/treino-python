@@ -34,6 +34,19 @@ class Conta:
         print("Data do saque: ", end="")
         Data()
 
-    def transfere(self, valor, origem, destino):
-        origem.saca(valor)
+    def transfere(self, valor, destino):
+        #origem.saca(valor) -> substituído pelo self abaixo
+        self.saca(valor)
         destino.deposita(valor)
+
+    def get_saldo(self): #"get_" retornam informações
+        return self.__saldo
+
+    def get_titular(self):
+        return self.__titular
+
+    def get_limite(self):
+        return self.__limite
+
+    def set_limite(self, limite): #"set_" enviam informações
+        self.limite = limite
