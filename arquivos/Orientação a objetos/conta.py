@@ -18,7 +18,7 @@ class Conta:
         #O "__" impede que o parâmetro seja acessado diretamente. Dessa forma, é preciso uma função para acessar seu valor. Ex: para acessar o saldo, enquanto houver "__", só será possível pelo método "extrato()".
 
     def extrato(self):
-        print(f"Saldo {self.__saldo} do titular {self.__titular}")
+        print(f"Saldo R$ {self.__saldo} do titular {self.__titular}")
         print("Data do extrato: ", end="")
         Data()
 
@@ -29,10 +29,13 @@ class Conta:
         Data()
 
     def saca(self, valor):
-        self.__saldo -= valor
-        print(f"Valor do saque: R$ {valor}")
-        print("Data do saque: ", end="")
-        Data()
+        if(valor <= (self.__saldo + self.__limite)):
+            self.__saldo -= valor
+            print(f"Valor do saque: R$ {valor}")
+            print("Data do saque: ", end="")
+            Data()
+        else:
+            print(f"O valor R$ {valor} excede seu limite de R$ {self.__limite}")
 
     def transfere(self, valor, destino):
         #origem.saca(valor) -> substituído pelo self abaixo
@@ -45,8 +48,10 @@ class Conta:
     def get_titular(self):
         return self.__titular
 
-    def get_limite(self):
+    @property
+    def limite(self):
         return self.__limite
 
-    def set_limite(self, limite): #"set_" enviam informações
-        self.limite = limite
+    @limite.setter
+    def limite(self, limite): #"set_" enviam informações
+        self.__limite = limite
