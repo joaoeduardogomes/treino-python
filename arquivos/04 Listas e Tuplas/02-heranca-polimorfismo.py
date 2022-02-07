@@ -40,6 +40,28 @@ class ContaInvestimento(Conta):
     pass
 
 
+class ContaSalario:
+
+    def __init__(self, codigo):
+        self._codigo = codigo
+        self._saldo = 0
+
+    def __eq__(self, outro):
+        if type(outro) != ContaSalario:
+            return False
+            #executa verificação apenas entre contas do tipo 'salário'.
+        else:
+            return self._codigo == outro._codigo
+        #verifica se duas contas são iguais de acordo com o código da conta.
+        #A partir de agora, usar "==" ou "!=" funciona de acordo com o critério estabelecido no "eq"
+
+    def deposita (self, valor):
+        self._saldo += valor
+
+    def __str__(self):
+        return f"[>>Código {self._codigo} Saldo {self._saldo}<<]"
+
+
 print()
 conta16 = ContaCorrente(16)
 conta16.deposita(1000)
@@ -65,5 +87,9 @@ for conta in contas:
     conta.passa_o_mes()#duck type
     print(conta)
 
+print('=-' * 30)
+
+conta1 = ContaSalario(37)
+print(conta1)
 
 print()
