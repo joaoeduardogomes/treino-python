@@ -1,4 +1,5 @@
 from abc import ABCMeta, abstractmethod
+from functools import total_ordering #importante para fazer <= em objetos. Basta definir os m´petodos "eq" e pelo menos um outro método de comparação.
 
 class Conta(metaclass=ABCMeta):
 
@@ -39,7 +40,7 @@ class ContaPoupanca(Conta):
 class ContaInvestimento(Conta):
     pass
 
-
+@total_ordering
 class ContaSalario:
 
     def __init__(self, codigo):
@@ -54,6 +55,10 @@ class ContaSalario:
             return self._codigo == outro._codigo
         #verifica se duas contas são iguais de acordo com o código da conta.
         #A partir de agora, usar "==" ou "!=" funciona de acordo com o critério estabelecido no "eq"
+
+    def __lt__(self, outro): 
+        #"lt" = "less than (menos que)"
+        return self._saldo < outro._saldo
 
     def deposita (self, valor):
         self._saldo += valor
@@ -91,5 +96,16 @@ print('=-' * 30)
 
 conta1 = ContaSalario(37)
 print(conta1)
+
+print("~~" * 20)
+
+conta10 = ContaSalario(55)
+conta10.deposita(100)
+
+conta11 = ContaSalario(89)
+conta11.deposita(200)
+
+print(conta10 <= conta11) #verifica se é menor de acordo com o 'saldo', conforme o método "lt"
+# O "==" verifica tando o valor do saldo quanto o código para saber se ambos são iguais. Se ao menos um deles for diferente, não há igualdade.
 
 print()
