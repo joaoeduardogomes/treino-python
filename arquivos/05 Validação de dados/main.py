@@ -1,5 +1,5 @@
 from validate_docbr import CPF
-from cpf import Cpf
+from cpf_cnpj import Documento
 
 print()
 
@@ -11,7 +11,12 @@ print()
 
 print(cpf.validate("789.654.123-52"))'''
 
-cpf_um = Cpf('02549088026')
-print(cpf_um)
+cpf_um = '26135229095'
+documento = Documento.cria_documento(cpf_um)
+print(f"CPF: {documento}")
+
+cnpj_um = '82660142000140'
+documento2 = Documento.cria_documento(cnpj_um)
+print(f"CNPJ: {documento2}")
 
 print()
