@@ -4,6 +4,8 @@ import re
 from TelefonesBr import TelefonesBr
 from datetime import datetime, timedelta
 from datas_br import DatasBr
+from acesso_cep import BuscaEndereco
+import requests
 
 print()
 
@@ -50,6 +52,17 @@ print(telefone_objeto)'''
 '''hoje = DatasBr()
 print(hoje.tempo_cadastro())'''
 
+# CEP:
+'''cep = 91060530
+objeto_cep = BuscaEndereco(cep)
+
+print(objeto_cep)
+
+#r = requests.get(f"https://viacep.com.br/ws/{cep}/json/")
+#print(r.text)
+
+bairro, cidade , uf = objeto_cep.acessa_via_cep()
+print(bairro, cidade, uf)'''
 
 
 print() 
